@@ -1,22 +1,44 @@
-.App {
+.login-container {
 	display: flex;
 	text-align: center;
 	height: 100vh;
+	padding: 2em;
+	flex-direction: column;
+	background: #8c52ff;
+  }
+  .center{
+	  justify-content: center;
+	  align-items: center ;
+	  text-align: 'center';
   }
   .button {
-	max-width: 8em;
 	max-height: 4em;
-	font-size: 1em;
+	font-size: 25px;
 	margin: auto;
 	display: inline-block;
 	padding: 1em;
-	color: #000;
+	color: #ffffff;
 	transition: color 0.3s linear;
-	border-color: #000;
-	border-width: 2px;
+	border: 1px solid #ffffff;
+	font-family: 'Roboto';
+	background-color: #8c52ff
   }
   .button:hover {
-	color: white;
-	border: 1px solid white;
-	background-color: black;
+	color: #8c52ff;
+	border: 1px solid #ffffff;
+	background-color: #ffffff;
+	cursor: pointer;
+  }
+  .title {
+	  font-family: 'Livvic';
+	  font-size: 150px;
+	  color: #ffffff;
+	  margin: 0;
+  }
+  .logout-button {
+	position: absolute;
+	left: 0;
+	margin: 0px;
+	font-size: 15px;
+	z-index: 100;
   }

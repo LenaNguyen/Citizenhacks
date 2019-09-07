@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { appConfig } from "./utils/constants";
 import { UserSession } from "blockstack";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+
 import './App.css';
+import WebsiteLists from "./pages/WebsiteLists";
+import Login from './pages/Login';
 
 class App extends Component {
 
@@ -19,29 +23,16 @@ class App extends Component {
 			window.location = "/";
 		}
 	};
-	handleSignIn = () => {
-		const { userSession } = this.state;
-		userSession.redirectToSignIn();
-	};
-	handleSignOut = () => {
-		const { userSession } = this.state;
-		userSession.signUserOut();
-		window.location = "/";
-	};
+
 	render() {
 		const { userSession } = this.state;
 		return (
-			<div className="App">
-				{userSession.isUserSignedIn() ? (
-					<button className="button" onClick={this.handleSignOut}>
-						<strong>Sign Out</strong>
-					</button>
-				) : (
-						<button className="button" onClick={this.handleSignIn}>
-							<strong>Sign In</strong>
-						</button>
-					)}
-			</div>
+			<Router>
+				<Route path="/" exact render={() => (
+					userSession.isUserSignedIn() ? <Redirect to="/sites" /> : <Login userSession={userSession} />
+				)} />
+				<Route path="/sites" exact component={() => <WebsiteLists userSession={userSession} />} />
+			</Router>
 		);
 	}
 }
