@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { appConfig } from "./utils/constants";
 import { UserSession } from "blockstack";
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import './App.css';
 import WebsiteLists from "./pages/WebsiteLists";
@@ -9,9 +9,14 @@ import Login from './pages/Login';
 
 class App extends Component {
 
-	state = {
-		userSession: new UserSession({ appConfig })
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			userSession: new UserSession({ appConfig })
+		};
+	}
+
+
 
 	componentDidMount = async () => {
 		const { userSession } = this.state;

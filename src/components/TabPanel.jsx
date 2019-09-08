@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 
 const TabPanel = ({ curIndex, index, children, ...other }) => {
-	console.log(curIndex, index);
+
 	return (
 		<Container
 			role='tabpanel'
